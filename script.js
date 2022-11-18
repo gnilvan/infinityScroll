@@ -1,22 +1,42 @@
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
-let photoArray = []; 
-
+let photosArray = []; 
 
 // unsplash api
-const count = 10;
+let count = 30;
 const apiKey = 'XsgRJ0x7xkFy1RDdb1FacHqTgp5s7DyLSc6ouQ05fAY';
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
-//create elements for links and photos, add to the dom
+// helper function to setAttributes on DOM
+function setAttributes(element, attributes) {
+    for (const key in attributes) {
+        element.setAttribute(key, attributes[key]);
+    }
+}
 
+//create elements for links, photos & add to the dom
 function displayPhotos() {
+    imagesLoaded = 0;
+    totalImages = photosArray.length;
     //run function for each object in photosArray
     photoArray.forEach((photo) => {
         // create <a> to link to unsplash
         const item = document.createElement('a');
-        item.setAttribute('href', )
+        // create image for photo
+        setAttributes(item, {
+            href: photo.links.html,
+            target: '_blank',
+        });
+        const img = document.createElement('img');
+        setAttributes(img, {
+            src: photo.urls.regular,
+            alt: photo.alt_description,
+            title: photo.alt_description
+        })
+        // put <img> in <a>, both in container
+        item.appendChild(img);
+        imageContainer.appendChild(item);
     });
 }
 
@@ -31,5 +51,11 @@ async function getPhotos() {
     }
 }
 
+//check if scrolling near btm page load more photos
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
+        getPhotos(); 
+    }
+})
 
 getPhotos();
