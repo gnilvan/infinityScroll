@@ -1,3 +1,7 @@
+import dotenv from 'dotenve';
+
+dotenv.config();
+
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
@@ -5,7 +9,7 @@ let photosArray = [];
 
 // unsplash api
 let count = 30;
-const apiKey = 'XsgRJ0x7xkFy1RDdb1FacHqTgp5s7DyLSc6ouQ05fAY';
+const apiKey = process.env.API_KEY;
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 // helper function to setAttributes on DOM
@@ -55,6 +59,7 @@ async function getPhotos() {
 window.addEventListener('scroll', () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 800) {
         getPhotos(); 
+        console.log('am being called')
     }
 })
 
