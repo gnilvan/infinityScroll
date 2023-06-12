@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "node": "^20.2.0"
+  },
+  "name": "infinityscroll",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnilvan/infinityScroll.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnilvan/infinityScroll/issues"
+  },
+  "homepage": "https://github.com/gnilvan/infinityScroll#readme",
+  "description": ""
+}

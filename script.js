@@ -1,9 +1,9 @@
-import dotenv from 'dotenve';
+const dotenv = require('dotenve');
 
 dotenv.config();
 
 const imageContainer = document.getElementById('image-container');
-const loader = document.getElementById('loader');
+// const loader = document.getElementById('loader');
 
 let photosArray = []; 
 
